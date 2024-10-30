@@ -2,46 +2,32 @@
 
 This file indicates the overall structure of working notebooks used in Hyper projects.
 
-## Demostats & Socialvalues & Store profiling (Previous Method)
-This file is modified from Harold's note book "Demostats & socialvalues".
-I modified it to fit our need, the overall gravity calculation logic is the same as the original workflow.
+The Pipeline orders:
+* Preprocessing:
+
+Gravity Calculation, UNION THREE SOURCE DATA
+### Notebook Gravity calculation 
+generats result tables containing store profiles and store attraction, filtered by either 0.5% or 1% of attraction value.
+### Notebook UNION THREE SOURCE DATA 
+preprocess the data sources to a usable format and migrating them together for further processing.
+
+2. Three different result tables:
+
+### Demostats Immigration combined table: 
+Generates result table of demostats together with immigration data.
+
+### SV variable provessing
+Social value tables
+
+### Gravity Competition
+Competition table being able to tell the impact on attraction after taking out the impact of a single BANNER/CHANNEL/CUSTOMER_GROUP.
+
+## Gravity calculation 
+Calculates the gravity value for each store, also including the store information to be used in demostats and social value store profiling.
 
 A few pipelines are processed in this notebook:
-1. Preprocess and map the demostats value to postal code area.
-* preprocessing from the source data:
-    demo_stats_2023_variables_list
-    combined_ldu_p1
-    combined_ldu_p2
-    environics.demostats2023_18
-    environics.epccf_unique
-
-* Generated file:
-    environics.demostats_LDU_2023_cleaned
-
-2.Social value file preprocessing:
-* files used during preprocessing:
-    environics.socialvalues
-    social_values_2023_variables_list
-* Generated file:
-    environics.socialvalues_2023_cleaned
-
-3.Filter for relevant features (Deprecated)
-    used to manually select the features we need, replaced by master demostats table now.
-
-4.Demostats variable processing.
-Melt and join all the demostats tables, with the pivoting of tables for purpose of exporting to excel.
-* files used:
-    environics.demostats_LDU_2023_cleaned
-    environics.demostats_LDU_2026_cleaned
-    environics.demostats_LDU_2028_cleaned
-    environics.demostats_LDU_2033_cleaned
-    environics.demostats_LDU_2018_cleaned
-
-* Generated file:
-    environics.ldu_feature_vals_melted_df
-
-5.Crossjoin Stores to Postal Codes
-On the top of demostats results, joining the store information and do store filtering based on adjacent provinces. The gravity calculation is done at the end of this step.
+1. Crossjoin Stores to Postal Codes
+Joining the store information and do store filtering based on adjacent provinces. The gravity calculation is done at the end of this step.
 
 * files used:
     hyper.unioned_stores_52weeks_2024_0927
@@ -54,13 +40,6 @@ On the top of demostats results, joining the store information and do store filt
     (NOTE: filter out stores with less than 0.5% attraction)
     hyper.store_LDU_attraction_fullp_filtered_0910
     (NOTE: filter out stores with less than 1% attraction)
-
-6. Store profiling 
-* files used:
-    hyper.store_LDU_attraction_f_halfp_0927 
-    hyper.ldu_feature_vals_melted_df_master_variable_0920
-    default.language_mapping 
-
 
 
 ## Demostats Immigration combined table
@@ -126,7 +105,9 @@ Renaming and filtering of columns were done here.
 
 * data files used:
     datamart.out_pos_store_fv_all_upc
+
     environics.costco_source_2024_07_14
+
     environics.shipment_stores_source_2024_07_14
 
 * result generated:
