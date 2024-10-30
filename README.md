@@ -2,7 +2,7 @@
 
 This file indicates the overall structure of working notebooks used in Hyper projects.
 
-## Demostats & Socialvalues & Store profiling
+## Demostats & Socialvalues & Store profiling (Previous Method)
 This file is modified from Harold's note book "Demostats & socialvalues".
 I modified it to fit our need, the overall gravity calculation logic is the same as the original workflow.
 
