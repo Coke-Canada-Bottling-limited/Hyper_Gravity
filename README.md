@@ -3,23 +3,23 @@
 This file indicates the overall structure of working notebooks used in Hyper projects.
 
 The Pipeline orders:
-* Preprocessing:
+#### Preprocessing:
 
 Gravity Calculation, UNION THREE SOURCE DATA
-### Notebook Gravity calculation 
+* Notebook Gravity calculation 
 generats result tables containing store profiles and store attraction, filtered by either 0.5% or 1% of attraction value.
-### Notebook UNION THREE SOURCE DATA 
+* Notebook UNION THREE SOURCE DATA 
 preprocess the data sources to a usable format and migrating them together for further processing.
 
-2. Three different result tables:
+#### Three different result tables:
 
-### Demostats Immigration combined table: 
+* Demostats Immigration combined table: 
 Generates result table of demostats together with immigration data.
 
-### SV variable provessing
+* SV variable provessing
 Social value tables
 
-### Gravity Competition
+* Gravity Competition
 Competition table being able to tell the impact on attraction after taking out the impact of a single BANNER/CHANNEL/CUSTOMER_GROUP.
 
 ## Gravity calculation 
@@ -31,14 +31,20 @@ Joining the store information and do store filtering based on adjacent provinces
 
 * files used:
     hyper.unioned_stores_52weeks_2024_0927
+
     combined_ldu_p1
+
     combined_ldu_p2
 
 * Generated files:
     hyper.store_LDU_attraction_0927
+
     hyper.store_LDU_attraction_f_halfp_0927
+
     (NOTE: filter out stores with less than 0.5% attraction)
+
     hyper.store_LDU_attraction_fullp_filtered_0910
+
     (NOTE: filter out stores with less than 1% attraction)
 
 
@@ -51,9 +57,13 @@ We are taking three years of demostats data and two years of immigration data ri
 The datasets are preprocessed, pivoted and melted into usable format.
 * preprocessing from the source data:
     environics.demostats_2023_all_pc_vars
+
     environics.demostats_2028_all_pc_vars
+    
     environics.demostats_2033_all_pc_vars
+
     environics.newtocanada_2024q1p1_all_pc_vars
+
     environics.newtocanada_2024q1p2_all_pc_vars
 
 * Generated file:
@@ -62,7 +72,9 @@ The datasets are preprocessed, pivoted and melted into usable format.
 2. Store profiling 
 * files used:
     hyper.store_LDU_attraction_f_halfp_0927
+
     hyper.ldu_feature_vals_melted_df_master_immi_combined
+
     default.language_mapping 
 
 * Generated file:
@@ -74,7 +86,10 @@ Processing the social value tables and generate the similar results as demostats
 
 * data files used:
     environics.socialvalues_2024_all_pc_vars
+
+    
     environics.socialvalues_2033_all_pc_vars
+    
     hyper.store_LDU_attraction_f_halfp
 
 * middle files created:
